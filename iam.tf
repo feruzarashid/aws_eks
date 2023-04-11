@@ -1,9 +1,8 @@
-# Initially only root user has access to kubernetes cluster
 module "allow_eks_access_iam_policy" {
   source  = "terraform-aws-modules/iam/aws//modules/iam-policy"
   version = "5.3.1"
 
-  name          = "allow-eks-access"
+ # name          = "allow-eks-access"
   create_policy = true
 
   policy = jsonencode({
@@ -11,7 +10,7 @@ module "allow_eks_access_iam_policy" {
     Statement = [
       {
         Action = [
-          "eks:DescribeCluster",  #this line makes sure that user with this policy will have access to a cluster
+          "eks:DescribeCluster",
         ]
         Effect   = "Allow"
         Resource = "*"
