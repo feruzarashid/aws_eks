@@ -2,7 +2,7 @@ module "allow_eks_access_iam_policy" {
   source  = "terraform-aws-modules/iam/aws//modules/iam-policy"
   version = "5.3.1"
 
- # name          = "allow-eks-access"
+  name          = "allow-eks-access"
   create_policy = true
 
   policy = jsonencode({
@@ -33,7 +33,6 @@ module "eks_admins_iam_role" {
     "arn:aws:iam::${module.vpc.vpc_owner_id}:root"
   ]
 }
-
 module "user1_iam_user" {
   source  = "terraform-aws-modules/iam/aws//modules/iam-user"
   version = "5.3.1"
@@ -44,7 +43,6 @@ module "user1_iam_user" {
 
   force_destroy = true
 }
-
 module "allow_assume_eks_admins_iam_policy" {
   source  = "terraform-aws-modules/iam/aws//modules/iam-policy"
   version = "5.3.1"
@@ -65,7 +63,6 @@ module "allow_assume_eks_admins_iam_policy" {
     ]
   })
 }
-
 module "eks_admins_iam_group" {
   source  = "terraform-aws-modules/iam/aws//modules/iam-group-with-policies"
   version = "5.3.1"
